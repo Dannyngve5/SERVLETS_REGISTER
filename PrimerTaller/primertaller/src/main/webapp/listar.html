@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIST</title>
+</head>
+<body>
+    <h2>USER DATA</h2>
+    <div id="userInfo"></div>
+    
+    <script>
+        // Función para enviar una solicitud GET al servlet Listar
+        function obtenerInformacionUsuario() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "listar", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("userInfo").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+
+        // Llamar a la función al cargar la página
+        window.onload = function() {
+            obtenerInformacionUsuario();
+        };
+    </script>
+</body>
+</html>
